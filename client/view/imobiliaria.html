@@ -1,0 +1,186 @@
+<div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Edifício Marcellus</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item seach">
+                        <button class="btn btn-default" ng-click="cadastrarImobiliaria()">
+                            <i class="fa fa-plus"></i> Cadastrar
+                        </button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-margem">
+                        <input type="text" class="form-control seach" placeholder="Buscar..." ng-model="buscar">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">Lista de imobiliárias</div>
+    <div ng-repeat="imobiliaria in listas | filter:seleciona_status">
+        <div class="panel-body">
+            <div class="panel-imobiliaria">
+                <dl>
+                    <div>
+                        <dt>Nome:</dt>
+                        <dd>{{imobiliaria.nome}}</dd>
+                    </div>
+                    <div>
+                        <dt>Endereço:</dt>
+                        <dd>{{imobiliaria.endereco}}</dd>
+                    </div>
+                    <div>
+                        <dt>Bairro:</dt>
+                        <dd>{{imobiliaria.bairro}}</dd>
+                    </div>
+                    <div>
+                        <dt>Telefone:</dt>
+                        <dd>{{imobiliaria.telefone}}</dd>
+                    </div>
+                    <div>
+                        <dt>Corretor:</dt>
+                        <dd>{{imobiliaria.corretor}}</dd>
+                    </div>
+                    <div>
+                        <dt>Status:</dt>
+                        <dd>{{imobiliaria.status}}</dd>
+                    </div>
+                    <div>
+                        <dt>Taxa de venda:</dt>
+                        <dd>{{imobiliaria.taxa_venda}} %</dd>
+                    </div>
+                    <div>
+                        <dt>Valor de venda:</dt>
+                        <dd>{{imobiliaria.valor_venda | currency:'R$'}}</dd>
+                    </div>
+                    <div>
+                        <dt>Valor cobrado:</dt>
+                        <dd>{{imobiliaria.valor_pago | currency:'R$'}}</dd>
+                    </div>
+                    <div>
+                        <dt>Data adicionada:</dt>
+                        <dd>{{imobiliaria.data_criado | date : "dd/MM/yyyy"}}</dd>
+                    </div>
+                    <div>
+                        <dt>Data do último contato:</dt>
+                        <dd>{{imobiliaria.data_ultimo | date : "dd/MM/yyyy"}}</dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="panel-contato">
+                <div class="panel-heading">
+                    <dt>Últimos contatos com a imobiliária</dt>
+                </div>
+                <div class="panel panel-info contato-border" ng-repeat="contato in imobiliaria.contatos" ng-show="$index < 2 || imobiliaria._showAllContatos">
+                    <div class="panel-body">
+                        <div>
+                            <dl>
+                                <div class="pull-right">
+                                    <button class="btn btn-danger btn-xs button-danger" ng-click="excluirContato(contato)">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div>
+                                    <span ng-if="contato.status === 'Positivo'">
+                                        <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-if="contato.status === 'Negativo'">
+                                        <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    <small>{{contato.data_contato | date : "dd/MM/yyyy"}}</small>
+                                </div>
+                                <div>
+                                    <p>{{contato.descricao}}</p>
+                                </div>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <small ng-show="!imobiliaria._showAllContatos && imobiliaria.contatos.length > 2">
+                        <a class="btn btn-info btn-xs" ng-click="imobiliaria._showAllContatos = !imobiliaria._showAllContatos" href>Mostrar todos <i class="fa fa-arrow-down"></i></a>
+                    </small>
+                    <small ng-show="imobiliaria._showAllContatos && imobiliaria.contatos.length > 2">
+                        <a class="btn btn-info btn-xs" ng-click="imobiliaria._showAllContatos = !imobiliaria._showAllContatos" href>Ocultar <i class="fa fa-arrow-up"></i></a>
+                    </small>
+                </div>
+            </div>
+            <div class="panel-cliente">
+                <div class="panel-heading">
+                    <dt>Visitas de compradores</dt>
+                </div>
+                <div class="panel panel-success cliente-border" ng-repeat="cliente in imobiliaria.clientes" ng-show="$index < 2 || imobiliaria._showAllClientes">
+                    <div class="panel-body">
+                        <div>
+                            <dl>
+                                <div class="pull-right">
+                                    <button class="btn btn-danger btn-xs button-danger" ng-click="excluirCliente(cliente)">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div>
+                                    <span ng-if="cliente.status === 'Satisfeito'">
+                                        <i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-if="cliente.status === 'Insatisfeito'">
+                                        <i class="fa fa-frown-o fa-2x" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    <small>{{cliente.data_visita | date : "dd/MM/yyyy"}}</small>
+                                </div>
+                                <div>
+                                    <small>{{cliente.nome}}</small>
+                                </div>
+                                <div>
+                                    <small>{{cliente.telefone}}</small>
+                                </div>
+                                <div>
+                                    <small>{{cliente.valor_oferta | currency:'R$'}}</small>
+                                </div>
+                                <div>
+                                    <p>{{cliente.feedback}}</p>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <small ng-show="!imobiliaria._showAllClientes && imobiliaria.clientes.length > 2">
+                        <a class="btn btn-success btn-xs" ng-click="imobiliaria._showAllClientes = !imobiliaria._showAllClientes" href>Mostrar todos <i class="fa fa-arrow-down"></i></a>
+                    </small>
+                    <small ng-show="imobiliaria._showAllClientes && imobiliaria.clientes.length > 2">
+                        <a class="btn btn-success btn-xs" ng-click="imobiliaria._showAllClientes = !imobiliaria._showAllClientes" href>Ocultar <i class="fa fa-arrow-up"></i></a>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="pull-left">
+                <button class="btn btn-danger btn-sm" ng-click="excluirImobiliaria(imobiliaria)">
+                    <i class="fa fa-trash"></i> Excluir
+                </button>
+                <button class="btn btn-primary btn-sm" ng-click="editarImobiliaria(imobiliaria)">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
+                </button>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-info btn-sm" ng-click="cadastrarContato(imobiliaria)">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Adicionar contato
+                </button>
+                <button class="btn btn-success btn-sm" ng-click="cadastrarCliente(imobiliaria)">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Adicionar visita
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

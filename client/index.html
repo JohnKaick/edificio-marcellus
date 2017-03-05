@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="apImobiliaria">
+
+<head>
+    <meta charset="utf-8">
+    <title>Edifício Marcellus</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootswatch/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style/app.css">
+    <link rel="stylesheet" type="text/css" href="lib/angular-ui-notification/angular-ui-notification.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/sweetalert2/sweetalert2.min.css">
+</head>
+
+<body>
+    <div ng-view></div>
+    <!-- Dependencies -->
+    <script src="lib/angular-1.6.2/angular.min.js"></script>
+    <script src="lib/angular-1.6.2/i18n/angular-locale_pt-br.js"></script>
+    <script src="lib/angular-1.6.2/angular-route.min.js"></script>
+    <script src="lib/angular-1.6.2/angular-animate.min.js"></script>
+    <script src="lib/ui-bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="lib/angular-ui-notification/angular-ui-notification.min.js"></script>
+    <script src="lib/sweetalert2/sweetalert2.min.js"></script>
+    <script src="lib/angular-sweetalert/ngSweetAlert2.min.js"></script>
+    <script type="text/javascript">
+        var ngSweetAlert2 = window.ngSweetAlert2;
+    </script>
+    <!-- Aplication angular -->
+    <script src="js/app.js"></script>
+    <!-- Services -->
+    <script src="js/services/imobiliariaAPI.js"></script>
+    <script src="js/services/contatoAPI.js"></script>
+    <script src="js/services/clienteAPI.js"></script>
+    <!-- Directives -->
+    <script src="js/directives/dataDirective.js"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/imobiliariaCtrl.js"></script>
+    <script src="js/controllers/cadastrarImobiliariaCtrl.js"></script>
+    <script src="js/controllers/cadastrarContatoCtrl.js"></script>
+    <script src="js/controllers/cadastrarClienteCtrl.js"></script>
+</body>
+
+</html>

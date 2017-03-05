@@ -1,0 +1,84 @@
+<div class="modal-header">
+    <h4 class="modal-title">Imobiliária</h4>
+</div>
+
+<div class="modal-body">
+    <form class="form">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input class="form-control" type="text" placeholder="Nome" ng-model="imobiliaria.nome">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>Endereço</label>
+                    <input class="form-control" type="text" placeholder="Local da Imobiliária" ng-model="imobiliaria.endereco">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Bairro</label>
+                    <input class="form-control" type="text" placeholder="Endereço" ng-model="imobiliaria.bairro">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input class="form-control" type="text" placeholder="XXXX-XXXX" ng-model="imobiliaria.telefone">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>Corretor</label>
+                    <input class="form-control" type="text" placeholder="Nome" ng-model="imobiliaria.corretor">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" ng-model="imobiliaria.status">
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Taxa de venda</label>
+                    <input class="form-control" type="number" placeholder="%" ng-model="imobiliaria.taxa_venda">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Valor de venda</label>
+                    <input class="form-control" type="number" placeholder="R$" ng-model="imobiliaria.valor_venda">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label>Data adicionado</label>
+                    <data ng-model="imobiliaria.data_criado"></data>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="salvar(imobiliaria)">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar
+    </button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+</div>

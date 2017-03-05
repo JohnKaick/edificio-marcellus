@@ -1,0 +1,40 @@
+.formulario {
+    padding: 5px;
+}
+.panel-imobiliaria {
+    width: 24%;
+    float: left;
+}
+.panel-contato {
+    width: 37%;
+    float: left;
+
+}
+.panel-cliente {
+    width: 37%;
+    float: right;
+}
+.contato-border {
+    background-color: #eaf4fb;
+}
+.cliente-border {
+    background-color: #e7f8f5;
+}
+.clearfix {
+     border-bottom:1px solid black;
+}
+dt {
+    margin-top: 5px;
+}
+.seach {
+    margin-top: 8px;
+
+}
+.nav-margem{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.button-danger {
+    background-color: #f3a59d;
+    border-color: #f0938a;
+}
