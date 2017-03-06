@@ -2,6 +2,8 @@ const Hapi = require('hapi')
 
 const server = new Hapi.Server()
 
+require('dotenv').config()
+
 server.connection({ port: process.env.PORT || 9090 })
 
 server.register(require('./structure/server.plugins'), function (err) {
