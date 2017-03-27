@@ -14,6 +14,16 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-margem">
+                        <select type="text" class="form-control seach" ng-model="escolheStatus" ng-options="listas for listas in filtroStatus">
+                            <option value="">Status</option>
+                        </select>
+                    </li>
+                    <li class="nav-margem">
+                        <select type="text" class="form-control seach" ng-model="escolheBairro" ng-options="listas for listas in filtroBairro">
+                            <option value="">bairro</option>
+                        </select>
+                    </li>
+                    <li class="nav-margem">
                         <input type="text" class="form-control seach" placeholder="Buscar..." ng-model="buscar">
                     </li>
                 </ul>
@@ -23,7 +33,7 @@
 </div>
 <div class="panel panel-primary">
     <div class="panel-heading">Lista de imobiliárias</div>
-    <div ng-repeat="imobiliaria in listas | filter:seleciona_status">
+    <div ng-repeat="imobiliaria in listas | filter: buscar">
         <div class="panel-body">
             <div class="panel-imobiliaria">
                 <dl>

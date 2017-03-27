@@ -2,6 +2,10 @@ angular.module('apImobiliaria').controller('imobiliariaCtrl', function ($scope, 
 
   $scope.listas = []
 
+  $scope.filtroBairro = ['Bela Vista', 'Brás', 'Liberdade', 'Paraiso', 'Paulista', 'República', 'Santa Cecília', 'Sé', 'Vergueiro']
+
+  $scope.filtroStatus = ['Ativo', 'Inativo']
+
   $scope.carregaLista = function () {
     imobiliariaAPI.obterLista().then(function (result) {
       $scope.listas = result.data
