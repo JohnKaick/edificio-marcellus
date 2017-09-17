@@ -16,6 +16,38 @@ module.exports.getMany = function (request, reply) {
   })
 }
 
+module.exports.getManyAtivo = function (request, reply) {
+  db.Imobiliaria.query((qb) => {
+    qb.where('status', 'ativo')
+    qb.orderBy('data_ultimo', 'asc')
+  }).fetchAll({
+    withRelated: [
+      { contatos: (qb) => { qb.orderBy('data_contato', 'desc') } },
+      { clientes: (qb) => { qb.orderBy('data_visita', 'desc') } }
+    ]
+  }).then((imobiliarias) => {
+    reply(imobiliarias)
+  }).catch(err => {
+    reply.badImplementation(err)
+  })
+}
+
+module.exports.getManyInativo = function (request, reply) {
+  db.Imobiliaria.query((qb) => {
+    qb.where('status', 'inativo')
+    qb.orderBy('data_ultimo', 'asc')
+  }).fetchAll({
+    withRelated: [
+      { contatos: (qb) => { qb.orderBy('data_contato', 'desc') } },
+      { clientes: (qb) => { qb.orderBy('data_visita', 'desc') } }
+    ]
+  }).then((imobiliarias) => {
+    reply(imobiliarias)
+  }).catch(err => {
+    reply.badImplementation(err)
+  })
+}
+
 module.exports.getOne = function (request, reply) {
   sidCache.translate(request.params.sid, 'Imobiliaria').then((Id) => {
     return db.Imobiliaria.query((qb) => {
@@ -40,6 +72,7 @@ module.exports.create = function (request, reply) {
     endereco: request.payload.endereco,
     bairro: request.payload.bairro,
     telefone: request.payload.telefone,
+    email: request.payload.email,
     corretor: request.payload.corretor,
     status: request.payload.status ? request.payload.status : 'Ativo',
     taxa_venda: request.payload.taxa_venda,
@@ -66,6 +99,7 @@ module.exports.update = function (request, reply) {
       endereco: request.payload.endereco,
       bairro: request.payload.bairro,
       telefone: request.payload.telefone,
+      email: request.payload.email,
       corretor: request.payload.corretor,
       status: request.payload.status ? request.payload.status : 'Ativo',
       taxa_venda: request.payload.taxa_venda,

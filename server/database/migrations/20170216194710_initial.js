@@ -7,6 +7,7 @@ exports.up = function (knex, Promise) {
       table.string('endereco', 255)
       table.string('bairro', 255)
       table.string('telefone', 255)
+      table.string('email', 255)
       table.string('corretor', 255)
       table.enu('status', ['Ativo', 'Inativo'])
       table.integer('taxa_venda')
@@ -33,6 +34,10 @@ exports.up = function (knex, Promise) {
       table.integer('valor_oferta')
       table.enu('status', ['Satisfeito', 'Insatisfeito'])
       table.string('feedback', 1020)
+    }),
+    knex.schema.createTable('email', function (table) {
+      table.increments('id').primary()
+      table.string('mensagem', 2040)
     })
   ])
 }
@@ -41,6 +46,7 @@ exports.down = function (knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('cliente'),
     knex.schema.dropTable('contato'),
-    knex.schema.dropTable('imobiliaria')
+    knex.schema.dropTable('imobiliaria'),
+    knex.schema.dropTable('email')
   ])
 }

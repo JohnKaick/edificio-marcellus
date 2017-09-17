@@ -17,4 +17,5 @@ module.exports = function (server) {
   server.route(require('./../controllers/imobiliaria/routes'))
   server.route(require('./../controllers/contato/routes'))
   server.route(require('./../controllers/cliente/routes'))
+  server.route(require('./../controllers/email/routes'))
 }

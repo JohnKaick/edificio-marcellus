@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title">Email</h3>
+</div>
+
+<div class="modal-body">
+    <form class="form">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Mensagem</label>
+                        <textarea class="form-control" rows="15" placeholder="..." ng-model="email.mensagem"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+    <button type="button" class="btn btn-info" ng-click="enviar(email)">
+        <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar
+    </button>
+</div>

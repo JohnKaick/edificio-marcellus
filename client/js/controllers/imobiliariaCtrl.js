@@ -2,10 +2,6 @@ angular.module('apImobiliaria').controller('imobiliariaCtrl', function ($scope, 
 
   $scope.listas = []
 
-  $scope.filtroBairro = ['Bela Vista', 'Brás', 'Liberdade', 'Paraiso', 'Paulista', 'República', 'Santa Cecília', 'Sé', 'Vergueiro']
-
-  $scope.filtroStatus = ['Ativo', 'Inativo']
-
   $scope.carregaLista = function () {
     imobiliariaAPI.obterLista().then(function (result) {
       $scope.listas = result.data
@@ -18,6 +14,7 @@ angular.module('apImobiliaria').controller('imobiliariaCtrl', function ($scope, 
     $uibModal.open({
       templateUrl: '/view/form-imobiliaria.html',
       controller: 'cadastrarImobiliariaCtrl',
+      size: 'lg',
       resolve: {
         imobiliaria: function () {
           return null
@@ -29,10 +26,44 @@ angular.module('apImobiliaria').controller('imobiliariaCtrl', function ($scope, 
     })
   }
 
+  $scope.mostrarTodosImobiliaria = function () {
+    imobiliariaAPI.obterLista().then(function (result) {
+      $scope.listas = result.data
+    }).catch(function (data) {
+      $scope.message = 'Error: ' + data
+    })
+  }
+
+  $scope.ativosImobiliaria = function () {
+    imobiliariaAPI.obterListaAtiva().then(function (result) {
+      $scope.listas = result.data
+    }).catch(function (data) {
+      $scope.message = 'Error: ' + data
+    })
+  }
+
+  $scope.inativosImobiliaria = function () {
+    imobiliariaAPI.obterListaInativa().then(function (result) {
+      $scope.listas = result.data
+    }).catch(function (data) {
+      $scope.message = 'Error: ' + data
+    })
+  }
+
+  $scope.enviarEmail = function () {
+    $uibModal.open({
+      templateUrl: '/view/form-email.html',
+      controller: 'enviarEmailCtrl',
+    }).result.then(function () {
+      Notification.success('Email enviado com sucesso!')
+    })
+  }
+
   $scope.editarImobiliaria = function (imob) {
     $uibModal.open({
       templateUrl: '/view/form-imobiliaria.html',
       controller: 'cadastrarImobiliariaCtrl',
+      size: 'lg',
       resolve: {
         imobiliaria: function () {
           return angular.copy(imob)

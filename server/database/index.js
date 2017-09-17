@@ -16,5 +16,6 @@ bookshelf.plugin(require('bookshelf-cascade-delete'))
 bookshelf.Imobiliaria = require('./models/imobiliaria')(bookshelf)
 bookshelf.Contato = require('./models/contato')(bookshelf)
 bookshelf.Cliente = require('./models/cliente')(bookshelf)
+bookshelf.Email = require('./models/email')(bookshelf)
 
 module.exports = bookshelf

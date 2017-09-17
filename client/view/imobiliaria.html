@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">Edifício Marcellus</a>
+                <a class="navbar-brand">Imobiliária</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -11,18 +11,20 @@
                             <i class="fa fa-plus"></i> Cadastrar
                         </button>
                     </li>
+                    <li class="nav-item seach">
+                        <div class="btn-group">
+                            <a class="btn btn-info" ng-click="mostrarTodosImobiliaria()">Mostrar todos</a>
+                            <a class="btn btn-info" ng-click="ativosImobiliaria()">Ativos</a>
+                            <a class="btn btn-info" ng-click="inativosImobiliaria()">Inativos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item seach">
+                        <button class="btn btn-success" ng-click="enviarEmail()">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i> Email
+                        </button>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-margem">
-                        <select type="text" class="form-control seach" ng-model="escolheStatus" ng-options="listas for listas in filtroStatus">
-                            <option value="">Status</option>
-                        </select>
-                    </li>
-                    <li class="nav-margem">
-                        <select type="text" class="form-control seach" ng-model="escolheBairro" ng-options="listas for listas in filtroBairro">
-                            <option value="">bairro</option>
-                        </select>
-                    </li>
                     <li class="nav-margem">
                         <input type="text" class="form-control seach" placeholder="Buscar..." ng-model="buscar">
                     </li>
@@ -32,7 +34,7 @@
     </nav>
 </div>
 <div class="panel panel-primary">
-    <div class="panel-heading">Lista de imobiliárias</div>
+    <div class="panel-heading">Informações</div>
     <div ng-repeat="imobiliaria in listas | filter: buscar">
         <div class="panel-body">
             <div class="panel-imobiliaria">
@@ -52,6 +54,10 @@
                     <div>
                         <dt>Telefone:</dt>
                         <dd>{{imobiliaria.telefone}}</dd>
+                    </div>
+                    <div>
+                        <dt>Email:</dt>
+                        <dd>{{imobiliaria.email}}</dd>
                     </div>
                     <div>
                         <dt>Corretor:</dt>

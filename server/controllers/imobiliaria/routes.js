@@ -10,6 +10,22 @@ module.exports = [
     }
   },
   {
+    path: '/api/imobiliaria/ativo',
+    method: 'GET',
+    config: {
+      handler: handlers.getManyAtivo,
+      auth: false
+    }
+  },
+  {
+    path: '/api/imobiliaria/inativo',
+    method: 'GET',
+    config: {
+      handler: handlers.getManyInativo,
+      auth: false
+    }
+  },
+  {
     path: '/api/imobiliaria/{sid}',
     method: 'GET',
     config: {

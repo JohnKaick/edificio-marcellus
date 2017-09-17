@@ -4,6 +4,14 @@ angular.module('apImobiliaria').service('imobiliariaAPI', function ($http) {
     return $http.get('/api/imobiliaria')
   }
 
+  this.obterListaAtiva = function () {
+    return $http.get('/api/imobiliaria/ativo')
+  }
+
+  this.obterListaInativa = function () {
+    return $http.get('/api/imobiliaria/inativo')
+  }
+
   this.obterImobiliaria = function (imobiliaria) {
     return $http.get('/api/imobiliaria/' + imobiliaria.sid)
   }
