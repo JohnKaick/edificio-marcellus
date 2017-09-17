@@ -1,6 +1,6 @@
 angular.module('apImobiliaria').controller('enviarEmailCtrl', function ($scope, $uibModalInstance, emailAPI) {
 
-    $scope.email = null
+    $scope.email = ''
 
     $scope.carregarMensagem = function () {
         emailAPI.mensagem().then(function (result) {
