@@ -2,7 +2,7 @@ const Hapi = require('hapi')
 
 const server = new Hapi.Server()
 
-require('dotenv').config()
+//require('dotenv').config()
 
 server.connection({ port: process.env.PORT || 3000 })
 
